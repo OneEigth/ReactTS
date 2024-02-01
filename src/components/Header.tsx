@@ -1,8 +1,15 @@
 import React, {useEffect, useRef, useState} from "react";
 
+import {Link} from "react-router-dom";
+import Search from "./SideBar/Search";
 
 
-export function Header() {
+interface HeaderProps {
+    search: any,
+    setSearch: any
+}
+
+export function Header({search, setSearch}: HeaderProps) {
     const [isProductMenuOpen, setProductMenuOpen] = useState(false);
     const productMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -20,13 +27,15 @@ export function Header() {
     
     return (
         <header className="bg-white">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <nav className="mx-auto flex max-w-7xl items-center justify-between p-0.5 lg:px-8" aria-label="Global">
                 <div className="flex lg:flex-1">
-                    <a href="http://localhost:3000/" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Your Company</span>
-                        <img className="h-8 w-auto"
-                             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt=""/>
-                    </a>
+                    <Link to="/">
+                        <a className="-m-1.5 p-1.5">
+                            <span className="sr-only">Your Company</span>
+                            <img className="h-8 w-auto"
+                                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt=""/>
+                        </a>
+                    </Link>
                 </div>
                 <div className="flex lg:hidden">
                     <button type="button"
@@ -44,7 +53,7 @@ export function Header() {
                         <button type="button" onClick={() => setProductMenuOpen(!isProductMenuOpen)}
                                 className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
                                 aria-expanded={isProductMenuOpen ? 'true' : 'false'}>
-                            Product
+                            Products
                             <svg className="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor"
                                  aria-hidden="true">
                                 <path fillRule="evenodd"
@@ -72,14 +81,14 @@ export function Header() {
                                             </svg>
                                         </div>
 
-                                            <div className="flex-auto">
-                                                <a href="/products" className="block font-semibold text-gray-900">
-                                                    PTZ-видеокамеры
-                                                    <span className="absolute inset-0"></span>
-                                                </a>
-                                                <p className="mt-1 text-gray-600">Мониторинг с возможностью
-                                                    управления</p>
-                                            </div>
+                                        <div className="flex-auto">
+                                            <a className="block font-semibold text-gray-900">
+                                                PTZ-видеокамеры
+                                                <span className="absolute inset-0"></span>
+                                            </a>
+                                            <p className="mt-1 text-gray-600">Мониторинг с возможностью
+                                                управления</p>
+                                        </div>
 
                                     </div>
                                     <div
@@ -147,14 +156,28 @@ export function Header() {
                                 </div>
                             </div>)}
                     </div>
+                    <Link to="/">
+                        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Home</a>
+                    </Link>
+                    <Link to="/products">
+                        <a className="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
+                    </Link>
 
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Features</a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Company</a>
+
+
                 </div>
+
+                <Search search={search} setSearch={setSearch}/>
+
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Log in <span
-                        aria-hidden="true">&rarr;</span></a>
+
+                    <Link to="/cart">
+                    <div className="flex items-center">
+                        <img className="h-6 w-auto ml-2"
+                             src="https://cdn-ru.bitrix24.ru/b18220310/landing/9ef/9ef5601e07462bc3245afaa626d431c6/6467eecac294bf28a5a7a4809767ab2b_1x.png"
+                             alt="Корзина"/>
+                    </div>
+                    </Link>
                 </div>
             </nav>
 

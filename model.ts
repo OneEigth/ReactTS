@@ -21,7 +21,7 @@ export interface Product {
         mountingType: string
         color: string
     };
-    category: string
+    category: Category
     image: string
     article:string
     manufacturer: string
