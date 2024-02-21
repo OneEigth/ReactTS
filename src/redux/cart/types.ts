@@ -1,4 +1,5 @@
-export type ProductItem = {
+
+export type CartItem = {
   id: string;
   title: string;
   price: number;
@@ -7,7 +8,9 @@ export type ProductItem = {
   count: number;
 };
 
-export interface ProductSliceState {
+export interface CartSliceState {
   totalPrice: number;
-  items: ProductItem[];
+  items: CartItem[];
+  status: string;
+  error: any
 }

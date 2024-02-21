@@ -1,8 +1,8 @@
-import {Category} from "@react-buddy/ide-toolbox";
+import {Category} from "../../../model";
 
 
 export type Product = {
-  productId: number,
+  id: string,
   title: string,
   price: number,
   description: string,
@@ -24,7 +24,7 @@ export type Product = {
     mountingType: string,
     color: string,
   },
-  category: typeof Category,
+  category: Category,
   image: string,
   article:string,
   manufacturer: string

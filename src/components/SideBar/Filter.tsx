@@ -11,12 +11,13 @@ import {useAppDispatch} from "../../hooks/hooks";
 import {setCategoryId, setCurrentPage} from '../../redux/filter/slice/filter';
 import {fetchProducts} from "../../redux/product/asyncActions";
 import {Product} from "../Product";
+
 import {Pagination} from "../Pagination";
 
 
 export function CFilter() {
     const dispatch = useAppDispatch();
-    const {items, status} = useSelector(selectProductData);
+    const {items} = useSelector(selectProductData);
     const {categoryId, sort, currentPage, searchValue} = useSelector(selectFilter);
 
     const onChangeCategory = React.useCallback((idx: number) => {
